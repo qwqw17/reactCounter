@@ -2,7 +2,6 @@
   height: 40vh;
   width: 100vw;
   font-size: 20vh;
-  text-align: center;
   /* background-color: brown; */
 }
 .neg{
@@ -10,7 +9,6 @@
   width: 100vw;
   font-size: 20vh;
   color:white;
-  text-align: center;
   background-color: black;
 }
 
@@ -26,12 +24,12 @@
   background-color: white;
 }
 
-.pp{
-  text-align: center;
-}
-
 .App{
   display:flex;
   justify-content: center;
   flex-direction:column
+}
+
+.App div{
+  text-align: center;
 }

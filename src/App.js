@@ -56,6 +56,9 @@ function App() {
   return (
     <div className="App">
       <div className="pos" onClick={incrementPos}>{pos}</div>
+      <div>
+        {(pos*100)/(pos-neg)}
+      </div>
       <div className="pp">
         <img src="white.jpg" className="white" onClick={decrementPos} />
         <img src={img} className="img" onClick={toggle} />
