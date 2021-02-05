@@ -1,23 +1,67 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react'
 import './App.css';
 
 function App() {
+  const [qw, setqw] = useState(null)
+
+  const [pos, setPos] = useState(0)
+  const [neg, setNeg] = useState(0)
+
+  const iPlay = "play.png";
+  const iPause = "pause.jpg";
+
+  const [img, setImg] = useState(iPlay)
+
+  useEffect(() => {
+    console.log("called!!")
+    let audio = new Audio("beep.mp3");
+    if (img.localeCompare(iPlay)) {
+      setqw(setInterval(() => {
+        audio.play();
+      }, 60000))
+    }
+    else {
+      clearInterval(qw);
+    }
+  },[img])
+
+
+  let toggle = ()=>{
+    setImg((prevImg)=>{
+      if (!prevImg.localeCompare(iPlay)){
+        return iPause;
+      }
+      else{
+        return iPlay;
+      }
+    })
+  }
+  
+  let incrementPos = ()=>{
+    setPos((prevPos)=>prevPos+1);
+  }
+
+  let decrementPos = () => {
+    setPos((prevPos) => prevPos - 1);
+  }
+
+  let incrementNeg = () => {
+    setNeg((prevNeg) => prevNeg + 2);
+  }
+
+  let decrementNeg = () => {
+    setNeg((prevNeg) => prevNeg - 2);
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="pos" onClick={incrementPos}>{pos}</div>
+      <div className="pp">
+        <img src="white.jpg" className="white" onClick={decrementPos} />
+        <img src={img} className="img" onClick={toggle} />
+        <img src="black.jpeg" className="white" onClick={incrementNeg} />
+      </div>
+      <div className="neg" onClick={decrementNeg}>{neg}</div>
     </div>
   );
 }
