@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     console.log("called!!")
-    let audio = new Audio("beep.mp3");
+    let audio = new Audio("beep.aiff");
     if (img.localeCompare(iPlay)) {
       setqw(setInterval(() => {
         audio.play();
