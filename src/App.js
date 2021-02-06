@@ -30,7 +30,7 @@ function App() {
       setPos(localStorage.getItem('pos'))
     }
     if (localStorage.getItem('neg')) {
-      setPos(localStorage.getItem('neg'))
+      setNeg(localStorage.getItem('neg'))
     }
   }, [])
 
