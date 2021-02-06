@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/reactCounter/static/css/main.235897ba.chunk.css",
-    "main.js": "/reactCounter/static/js/main.fafc2de8.chunk.js",
-    "main.js.map": "/reactCounter/static/js/main.fafc2de8.chunk.js.map",
+    "main.js": "/reactCounter/static/js/main.2c19c262.chunk.js",
+    "main.js.map": "/reactCounter/static/js/main.2c19c262.chunk.js.map",
     "runtime-main.js": "/reactCounter/static/js/runtime-main.14f8c74d.js",
     "runtime-main.js.map": "/reactCounter/static/js/runtime-main.14f8c74d.js.map",
     "static/js/2.d3aceaa3.chunk.js": "/reactCounter/static/js/2.d3aceaa3.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.14f8c74d.js",
     "static/js/2.d3aceaa3.chunk.js",
     "static/css/main.235897ba.chunk.css",
-    "static/js/main.fafc2de8.chunk.js"
+    "static/js/main.2c19c262.chunk.js"
   ]
 }
