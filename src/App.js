@@ -74,11 +74,11 @@ function App() {
       <div className="pos" onClick={incrementPos}>
         <div className="npos">{pos}</div>
         <div className="per">{parseInt((pos * 10000) / (pos - neg)) / 100}</div>
-        <img src="black.jpg" className="antipos" onClick={decrementPos} />
+        <img src="black.jpeg" className="antipos" onClick={decrementPos} />
       </div>
       <div className="neg" onClick={decrementNeg}>
         <div className="nval">{neg}</div>
-        <img src="white.jpeg" className="antineg" onClick={incrementNeg} />
+        <img src="white.jpg" className="antineg" onClick={incrementNeg} />
       </div>
       <div className="pp">
         {/* <img src="black.jpg" className="antipos" onClick={decrementPos} /> */}
