@@ -27,16 +27,16 @@ function App() {
 
   useEffect(() => {
     if(localStorage.getItem('pos')){
-      setPos(localStorage.getItem('pos'))
+      setPos(parseInt(localStorage.getItem('pos')))
     }
     if (localStorage.getItem('neg')) {
-      setNeg(localStorage.getItem('neg'))
+      setNeg(parseInt(localStorage.getItem('neg')))
     }
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('pos', pos);
-    localStorage.setItem('neg', neg);
+    localStorage.setItem('pos', parseInt(pos));
+    localStorage.setItem('neg', parseInt(neg));
   }, [pos, neg])
 
   let toggle = ()=>{
