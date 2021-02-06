@@ -51,15 +51,18 @@ function App() {
   }
   
   let incrementPos = ()=>{
+    console.log("ip");
+
     setPos((prevPos)=>prevPos+1);
   }
 
   let decrementPos = () => {
-    setPos((prevPos) => prevPos - 1);
+    console.log("dp");
+    setPos((prevPos) => prevPos - 2);
   }
 
   let incrementNeg = () => {
-    setNeg((prevNeg) => prevNeg + 2);
+    setNeg((prevNeg) => prevNeg + 4);
   }
 
   let decrementNeg = () => {
@@ -68,16 +71,20 @@ function App() {
   
   return (
     <div className="App">
-      <div className="pos" onClick={incrementPos}>{pos}</div>
-      <div>
-        {(pos*100)/(pos-neg)}
+      <div className="pos" onClick={incrementPos}>
+        <div className="npos">{pos}</div>
+        <div className="per">{parseInt((pos * 10000) / (pos - neg)) / 100}</div>
+        <img src="black.jpg" className="antipos" onClick={decrementPos} />
+      </div>
+      <div className="neg" onClick={decrementNeg}>
+        <div className="nval">{neg}</div>
+        <img src="white.jpeg" className="antineg" onClick={incrementNeg} />
       </div>
       <div className="pp">
-        <img src="white.jpg" className="white" onClick={decrementPos} />
+        {/* <img src="black.jpg" className="antipos" onClick={decrementPos} /> */}
         <img src={img} className="img" onClick={toggle} />
-        <img src="black.jpeg" className="white" onClick={incrementNeg} />
+        {/* <img src="white.jpeg" className="antineg" onClick={incrementNeg} /> */}
       </div>
-      <div className="neg" onClick={decrementNeg}>{neg}</div>
     </div>
   );
 }
