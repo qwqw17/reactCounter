@@ -25,6 +25,19 @@ function App() {
     }
   },[img])
 
+  useEffect(() => {
+    if(localStorage.getItem('pos')){
+      setPos(localStorage.getItem('pos'))
+    }
+    if (localStorage.getItem('neg')) {
+      setPos(localStorage.getItem('neg'))
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('pos', pos);
+    localStorage.setItem('neg', neg);
+  }, [pos, neg])
 
   let toggle = ()=>{
     setImg((prevImg)=>{
