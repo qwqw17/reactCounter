@@ -20,6 +20,12 @@
   left:35vw;
 }
 
+.reset{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 .img{
   height:10vh;
   width:30vw;

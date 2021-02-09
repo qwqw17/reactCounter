@@ -68,10 +68,16 @@ function App() {
   let decrementNeg = () => {
     setNeg((prevNeg) => prevNeg - 2);
   }
+
+  let reset = () => {
+    setPos(-1);
+    setNeg(0);
+  }
   
   return (
     <div className="App">
       <div className="pos" onClick={incrementPos}>
+        <div onClick={reset} className='reset'>Reset</div>
         <div className="npos">{pos}</div>
         <div className="per">{parseInt((pos * 10000) / (pos - neg)) / 100}</div>
         <img src="black.jpeg" className="antipos" onClick={decrementPos} />
@@ -81,10 +87,9 @@ function App() {
         <img src="white.jpg" className="antineg" onClick={incrementNeg} />
       </div>
       <div className="pp">
-        {/* <img src="black.jpg" className="antipos" onClick={decrementPos} /> */}
         <img src={img} className="img" onClick={toggle} />
-        {/* <img src="white.jpeg" className="antineg" onClick={incrementNeg} /> */}
       </div>
+      
     </div>
   );
 }
