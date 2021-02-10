@@ -13,12 +13,11 @@ function App() {
   const [img, setImg] = useState(iPlay)
 
   useEffect(() => {
-    console.log("called!!")
     let audio = new Audio("beep.mp3");
     if (img.localeCompare(iPlay)) {
       setqw(setInterval(() => {
         audio.play();
-      }, 60000))
+      }, 45000))
     }
     else {
       clearInterval(qw);
@@ -51,13 +50,10 @@ function App() {
   }
   
   let incrementPos = ()=>{
-    console.log("ip");
-
     setPos((prevPos)=>prevPos+1);
   }
 
   let decrementPos = () => {
-    console.log("dp");
     setPos((prevPos) => prevPos - 2);
   }
 
