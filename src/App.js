@@ -4,48 +4,101 @@ import './App.css';
 function App() {
   const [qw, setqw] = useState(null)
 
-  const [pos, setPos] = useState(0)
-  const [neg, setNeg] = useState(0)
+  const [pos, setPos] = useState(parseInt(localStorage.getItem('pos')) || 0)
+  const [neg, setNeg] = useState(parseInt(localStorage.getItem('neg')) || 0)
 
   const iPlay = "play.png";
   const iPause = "pause.jpg";
 
-  const [img, setImg] = useState(iPlay)
+  const [img, setImg] = useState(parseInt(localStorage.getItem('img')) || iPlay)
+
+  const [ctr, setCtr] = useState(parseInt(localStorage.getItem('ctr')) || -1)
 
   useEffect(() => {
-    let audio = new Audio("beep.mp3");
-    if (img.localeCompare(iPlay)) {
-      setqw(setInterval(() => {
-        audio.play();
-      }, 45000))
-    }
-    else {
-      clearInterval(qw);
-    }
-  },[img])
-
-  useEffect(() => {
-    if(localStorage.getItem('pos')){
+    if (localStorage.getItem('pos')) {
       setPos(parseInt(localStorage.getItem('pos')))
     }
     if (localStorage.getItem('neg')) {
       setNeg(parseInt(localStorage.getItem('neg')))
+    }
+    if (localStorage.getItem('ctr')) {
+      setCtr(parseInt(localStorage.getItem('ctr')))
+    }
+    if (localStorage.getItem('img')) {
+      setImg(localStorage.getItem('img'))
     }
   }, [])
 
   useEffect(() => {
     localStorage.setItem('pos', parseInt(pos));
     localStorage.setItem('neg', parseInt(neg));
-  }, [pos, neg])
+    localStorage.setItem('ctr', parseInt(ctr));
+    localStorage.setItem('img', img);
+    // localStorage.setItem('qw', qw)
+    // alert(localStorage.getItem('ctr'));
+    // alert(localStorage.getItem('img'));
+  }, [pos, neg, ctr, img])
+
+  useEffect(() => {
+    let audio = new Audio("beep.mp3");
+    let audio2 = new Audio("beep3.mp3");
+    let audio3 = new Audio("beep4.mp3");
+    if(ctr < 0){
+
+    }
+    else if(ctr%35){
+      setqw(
+        setTimeout(() => {
+          audio.play();
+          // alert("work")
+          setCtr(pCtr => pCtr + 1)
+        }, 1000)
+      )
+    }
+    else if(ctr%140 === 0){
+      // audio2.play();
+      setqw(
+        setTimeout(() => {
+          audio2.play();
+          // alert("long break");
+          setCtr(pCtr=>pCtr+1)
+        }, 1000)//900000);
+      )
+    }
+    else{
+      // audio3.play();
+      setqw(
+        setTimeout(() => {
+          audio3.play();
+          // alert("short break")
+          setCtr(pCtr => pCtr + 1)
+        }, 1000)//300000);
+      )
+    }
+    // alert(qw);
+    // alert(JSON.stringify(qw));
+  }, [ctr])
+
+  useEffect(() => {
+    if (img === iPause) {
+      setCtr(()=>{
+        if (localStorage.getItem('ctr') && localStorage.getItem('ctr') > 0){
+          return localStorage.getItem('ctr');
+        }
+        else{
+          return 1;
+        }
+      })
+    }
+    else{
+      setCtr(-1)
+      clearTimeout(qw);
+    }
+  },[img])
 
   let toggle = ()=>{
     setImg((prevImg)=>{
-      if (!prevImg.localeCompare(iPlay)){
-        return iPause;
-      }
-      else{
-        return iPlay;
-      }
+      return iPause
     })
   }
   
@@ -68,6 +121,7 @@ function App() {
   let reset = () => {
     setPos(-1);
     setNeg(0);
+    setImg(iPlay);
   }
   
   return (
